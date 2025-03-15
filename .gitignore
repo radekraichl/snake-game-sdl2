@@ -31,4 +31,14 @@
 *.out
 *.app
 
+# Visual Studio files
 .vs/
+
+# Intermediate directory
+intermediate_dir/
+
+# Output directory
+output/
+
+# SDL files
+SDL/
