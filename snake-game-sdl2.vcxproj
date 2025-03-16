@@ -71,18 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(SolutionDir)\src;$(SolutionDir);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDL\SDL2\lib\x64;$(SolutionDir)SDL\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
-    <SourcePath>$(SourcePath)</SourcePath>
-    <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <SourcePath>$(VC_SourcePath);$(SourcePath)</SourcePath>
+    <PublicIncludeDirectories>
+    </PublicIncludeDirectories>
     <OutDir>$(SolutionDir)\output\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>intermediate_dir\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(SolutionDir)\src;$(SolutionDir);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDL\SDL2\lib\x64;$(SolutionDir)SDL\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
-    <SourcePath>$(SourcePath)</SourcePath>
-    <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
+    <SourcePath>$(VC_SourcePath);$(SourcePath)</SourcePath>
+    <PublicIncludeDirectories>
+    </PublicIncludeDirectories>
     <OutDir>$(SolutionDir)\output\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>intermediate_dir\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -138,7 +140,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,7 +159,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -170,7 +174,7 @@
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\GameScene.cpp" />
     <ClCompile Include="src\Graphics.cpp" />
-    <ClCompile Include="src\Grass.cpp" />
+    <ClCompile Include="src\GameBackground.cpp" />
     <ClCompile Include="src\InputManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Random.cpp" />
@@ -178,6 +182,7 @@
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\SpriteSheet.cpp" />
     <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="Walls.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Config.h" />
@@ -185,7 +190,7 @@
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\GameScene.h" />
     <ClInclude Include="src\Graphics.h" />
-    <ClInclude Include="src\Grass.h" />
+    <ClInclude Include="src\GameBackground.h" />
     <ClInclude Include="src\InputManager.h" />
     <ClInclude Include="src\Position.h" />
     <ClInclude Include="src\Random.h" />
@@ -193,6 +198,7 @@
     <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\SpriteSheet.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="Walls.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

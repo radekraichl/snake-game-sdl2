@@ -1,9 +1,9 @@
-#include "Grass.h"
+#include "GameBackground.h"
+#include "SpriteSheet.h"
 #include "Config.h"
 #include "Random.h"
-#include "SpriteSheet.h"
 
-void Grass::start()
+void GameBackground::start()
 {
 	sheet = std::make_unique<SpriteSheet>("assets/images/pcb_sprite_sheet.png", 3, 3, renderer);
 	sheet->setTileScale(TILE_SCALE);
@@ -26,7 +26,7 @@ void Grass::start()
 	}
 }
 
-void Grass::render()
+void GameBackground::render()
 {
 	for (int row = 0; row < randomIndexArray.size(); ++row)
 	{

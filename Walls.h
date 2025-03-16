@@ -3,7 +3,7 @@
 #include "GameObject.h"
 #include "SpriteSheet.h"
 
-class Grass : public GameObject
+class Walls : public GameObject
 {
 public:
 	GameObject::GameObject;
@@ -12,9 +12,6 @@ public:
 	void render() override;
 
 private:
-	static constexpr int TILE_SCALE = 4;
-
 	std::unique_ptr<SpriteSheet> sheet;
-	std::vector<std::vector<Position>> randomIndexArray;
 };
 

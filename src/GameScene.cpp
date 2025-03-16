@@ -1,15 +1,17 @@
-#include "Grass.h"
-#include "Snake.h"
 #include "Graphics.h"
-#include "GameScene.h"
 #include "SpriteSheet.h"
 #include "InputManager.h"
+#include "GameScene.h"
+#include "Snake.h"
+#include "GameBackground.h"
+#include "Walls.h"
 
 // Constructor
 GameScene::GameScene(Graphics* graphics) : running(true), renderer(graphics->getRenderer())
 {
-	addObject(std::make_unique<Grass>("Grass", renderer));
-	addObject(std::make_unique<Snake>("Snake", 1 * Snake::TILE_SIZE, 16 * Snake::TILE_SIZE, renderer));
+	addObject(std::make_unique<GameBackground>("game_background", renderer));
+	addObject(std::make_unique<Walls>("walls", renderer));
+	addObject(std::make_unique<Snake>("snake", 1 * Snake::TILE_SIZE, 16 * Snake::TILE_SIZE, renderer));
 
 	for (auto& obj : gameObjects)
 	{
