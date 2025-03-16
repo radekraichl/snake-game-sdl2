@@ -5,7 +5,7 @@
 
 void Grass::start()
 {
-	sheet = std::make_unique<SpriteSheet>("assets/images/grass_sprite_sheet.png", 2, 2, renderer);
+	sheet = std::make_unique<SpriteSheet>("assets/images/pcb_sprite_sheet.png", 3, 3, renderer);
 	sheet->setTileScale(TILE_SCALE);
 
 	// Resize array
@@ -28,9 +28,9 @@ void Grass::start()
 
 void Grass::render()
 {
-	for (int row = 0; row < WINDOW_HEIGHT / sheet->getScaledTileHeight(); ++row)
+	for (int row = 0; row < randomIndexArray.size(); ++row)
 	{
-		for (int col = 0; col < WINDOW_WIDTH / sheet->getScaledTileWidth(); ++col)
+		for (int col = 0; col < randomIndexArray[row].size(); ++col)
 		{
 			int index_x = randomIndexArray[row][col].x;
 			int index_y = randomIndexArray[row][col].y;
