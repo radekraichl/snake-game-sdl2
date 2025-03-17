@@ -14,14 +14,15 @@ public:
 
 	void renderSprite(int index_x, int index_y, int posX, int posY);
 	
+	// Setters
+	void setTileScale(int scale);
+	void setTileSize(int size);
+
 	// Getters
 	int getScaledTileWidth() const;
 	int getScaledTileHeight() const;
 	int getRowCount() const;
 	int getColCount() const;
-
-	// Setters
-	void setTileScale(int scale);
 
 private:
 	const int rowCount, colCount;

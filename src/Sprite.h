@@ -21,14 +21,19 @@ public:
 	void renderSprite(int posX, int posY);
 	void renderSprite(int posX, int posY, float rot);
 
+	// Setters
+	void setScale(int scale);
+	void setTileSize(int size);
+	void setRotation(float rot);
+	void setSrcRect(SDL_Rect rect);
+
+	// Getters
 	SDL_Texture* getTexture() const;
 	int getScaledWidth() const;
 	int getScaledHeight() const;
+	int getRealWidth() const;
+	int getRealHeight() const;
 	int getScale() const;
-
-	void setScale(int scale);
-	void setRotation(float rot);
-	void setSrcRect(SDL_Rect rect);
 
 private:
 	std::unique_ptr<Texture> sprite;

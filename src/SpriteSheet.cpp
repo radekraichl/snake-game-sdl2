@@ -6,8 +6,8 @@ SpriteSheet::SpriteSheet(const std::string& filePath, int rows, int cols, SDL_Re
 	sprite = std::make_unique<Sprite>(filePath, renderer);
 
 	// Setting constants
-	int tempWidth = sprite->getScaledWidth() / cols;
-	int tempHeight = sprite->getScaledHeight() / rows;
+	int tempWidth = sprite->getRealWidth() / cols;
+	int tempHeight = sprite->getRealHeight() / rows;
 	*const_cast<int*>(&realTileWidth) = tempWidth;
 	*const_cast<int*>(&realTileHeight) = tempHeight;
 
@@ -38,6 +38,12 @@ void SpriteSheet::setTileScale(int scale)
 {
 	scaledTileWidth = realTileWidth * scale;
 	scaledTileHeight = realTileHeight * scale;
+}
+
+void SpriteSheet::setTileSize(int size)
+{
+	scaledTileWidth = size;
+	scaledTileHeight = size;
 }
 
 // Getters

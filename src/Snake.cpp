@@ -14,9 +14,10 @@ void Snake::start()
 {
 	body.clear();
 	isAlive = true;
+	timeAccumulator = 0.0f;
 	currentDirection = Direction::Right;
 
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		body.push_front(Position(startX + i * TILE_SIZE, startY));
 	}
@@ -24,15 +25,13 @@ void Snake::start()
 
 void Snake::update(float deltaTime, InputManager& inputManager)
 {
-	//return;
+	timeAccumulator += deltaTime;
 
 	if (inputManager.GetLastKeyPressed() == SDLK_r)
 	{
 		start();
 		inputManager.SetNoneDirection();
 	}
-
-	timeAccumulator += deltaTime;
 
 	if (timeAccumulator >= moveInterval && isAlive)
 	{
@@ -53,6 +52,7 @@ void Snake::update(float deltaTime, InputManager& inputManager)
 
 		body.push_front(newHead);
 
+		// Check if the snake has collided with itself
 		for (size_t i = 1; i < body.size(); ++i)
 		{
 			if (body[i] == body[0])
@@ -61,6 +61,17 @@ void Snake::update(float deltaTime, InputManager& inputManager)
 				body.pop_front();
 				return;
 			}
+		}
+
+		// Check if the snake has collided with the walls
+		if (body[0].x < WALL_TILE_SIZE || 
+			body[0].y < WALL_TILE_SIZE ||
+			body[0].x > WINDOW_WIDTH - WALL_TILE_SIZE - SNAKE_TILE_SIZE ||
+			body[0].y > WINDOW_HEIGHT - WALL_TILE_SIZE - SNAKE_TILE_SIZE)
+		{
+			isAlive = false;
+			body.pop_front();
+			return;
 		}
 
 		body.pop_back();

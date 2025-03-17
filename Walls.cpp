@@ -4,7 +4,7 @@
 void Walls::start()
 {
 	sheet = std::make_unique<SpriteSheet>("assets/images/walls_sprite_sheet.png", 3, 3, renderer);
-	sheet->setTileScale(2);
+	sheet->setTileSize(WALL_TILE_SIZE);
 }
 
 void Walls::render()
