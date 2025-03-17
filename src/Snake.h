@@ -2,17 +2,18 @@
 
 #include <map>
 #include <deque>
-#include "GameObject.h"
+#include "GraphicObject.h"
 #include "Sprite.h"
 #include "Config.h"
 
 struct Position;
 
-class Snake : public GameObject
+class Snake : public GraphicObject
 {
 public:
+	Snake(const std::string name, SDL_Renderer* renderer, int startX, int startY);
+	
 	static const int TILE_SIZE = SNAKE_TILE_SIZE;
-	Snake(const std::string& name, int x, int y, SDL_Renderer* renderer);
 
 	void start() override;
 	void update(float deltaTime, InputManager& inputManager) override;

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 #include "InputManager.h"
 
@@ -6,7 +7,7 @@ class GameObject
 {
 public:
 	GameObject() = delete;
-	GameObject(const std::string& name, SDL_Renderer* renderer);
+	GameObject(const std::string& name);
 	virtual ~GameObject() = default;
 
 	virtual void start() {};
@@ -14,9 +15,6 @@ public:
 	virtual void render() {};
 
 	std::string getName() const;
-
-protected:
-	SDL_Renderer* renderer;
 
 private:
 	const std::string name;

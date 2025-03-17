@@ -2,7 +2,8 @@
 #include "Direction.h"
 #include "InputManager.h"
 
-Snake::Snake(const std::string& name, int x, int y, SDL_Renderer* renderer) : GameObject(name, renderer), startX(x), startY(y)
+Snake::Snake(const std::string name, SDL_Renderer* renderer, int startX, int startY) :
+	GraphicObject(name, renderer), startX(startX), startY(startY)
 {
 	sprites.emplace("head", std::make_unique<Sprite>("assets/images/snake_head.png", renderer, TILE_SIZE));
 	sprites.emplace("body", std::make_unique<Sprite>("assets/images/snake_body.png", renderer, TILE_SIZE));
@@ -64,7 +65,7 @@ void Snake::update(float deltaTime, InputManager& inputManager)
 		}
 
 		// Check if the snake has collided with the walls
-		if (body[0].x < WALL_TILE_SIZE || 
+		if (body[0].x < WALL_TILE_SIZE ||
 			body[0].y < WALL_TILE_SIZE ||
 			body[0].x > WINDOW_WIDTH - WALL_TILE_SIZE - SNAKE_TILE_SIZE ||
 			body[0].y > WINDOW_HEIGHT - WALL_TILE_SIZE - SNAKE_TILE_SIZE)
@@ -77,6 +78,7 @@ void Snake::update(float deltaTime, InputManager& inputManager)
 		body.pop_back();
 		timeAccumulator = 0.0f;
 	}
+
 }
 
 void Snake::render()
@@ -123,7 +125,7 @@ int Snake::getRotationAngle(const Position& prev, const Position& current, const
 	if (prev.y == current.y && current.y == next.y) return 0;
 	if (prev.x == current.x && current.x == next.x) return 90;
 
-	// Trurns
+	// Turns
 	int deltaPrevX = prev.x - current.x;
 	int deltaPrevY = prev.y - current.y;
 	int deltaNextX = next.x - current.x;

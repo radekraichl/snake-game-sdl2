@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(SolutionDir)\src;$(SolutionDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)SDL\SDL2\lib\x64;$(SolutionDir)SDL\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\SDL\SDL2\include;$(SolutionDir)\SDL\SDL2_image\include;$(SolutionDir)\src;$(SolutionDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\SDL\SDL2\lib\x64;$(SolutionDir)\SDL\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
     <SourcePath>$(VC_SourcePath);$(SourcePath)</SourcePath>
     <PublicIncludeDirectories>
     </PublicIncludeDirectories>
@@ -80,23 +80,23 @@
     <IntDir>intermediate_dir\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(SolutionDir)\src;$(SolutionDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)SDL\SDL2\lib\x64;$(SolutionDir)SDL\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
-    <SourcePath>$(VC_SourcePath);$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)\SDL\SDL2\include;$(SolutionDir)\SDL\SDL2_image\include;$(SolutionDir)\src;$(SolutionDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\SDL\SDL2\lib\x64;$(SolutionDir)\SDL\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SourcePath)</SourcePath>
     <PublicIncludeDirectories>
     </PublicIncludeDirectories>
     <OutDir>$(SolutionDir)\output\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>intermediate_dir\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(SolutionDir)\src;$(SolutionDir);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDL\SDL2\lib\x86;$(SolutionDir)SDL\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\output\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>intermediate_dir\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)SDL\SDL2\lib\x86;$(SolutionDir)SDL\SDL2_image\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)SDL\SDL2\include;$(SolutionDir)SDL\SDL2_image\include;$(SolutionDir)\src;$(SolutionDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\output\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>intermediate_dir\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
     </ClCompile>
@@ -157,7 +157,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
@@ -167,10 +167,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GraphicObject.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\GameScene.cpp" />
     <ClCompile Include="src\Graphics.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="Walls.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GraphicObject.h" />
     <ClInclude Include="src\Config.h" />
     <ClInclude Include="src\Direction.h" />
     <ClInclude Include="src\GameObject.h" />

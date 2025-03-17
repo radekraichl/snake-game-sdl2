@@ -60,6 +60,9 @@
     <ClCompile Include="Walls.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Direction.h">
@@ -101,8 +104,11 @@
     <ClInclude Include="src\GameScene.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Walls.h">
+    <ClInclude Include="GraphicObject.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Walls.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

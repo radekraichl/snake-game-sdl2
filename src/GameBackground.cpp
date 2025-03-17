@@ -1,3 +1,5 @@
+#include <vector>
+#include <memory>
 #include "GameBackground.h"
 #include "SpriteSheet.h"
 #include "Config.h"
@@ -18,7 +20,7 @@ void GameBackground::start()
 	// Fill array
 	for (auto& row : randomIndexArray)
 	{
-		std::ranges::generate(row, [&]()
+		std::generate(row.begin(), row.end(), [&]()
 			{
 				return Position(Random::getInt(0, sheet->getColCount() - 1),
 					Random::getInt(0, sheet->getRowCount() - 1));

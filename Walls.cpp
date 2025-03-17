@@ -12,13 +12,13 @@ void Walls::render()
 	int tileWidth = sheet->getScaledTileWidth();
 	int tileHeight = sheet->getScaledTileHeight();
 
-	for (size_t i = 0; i < WINDOW_WIDTH / sheet->getScaledTileWidth(); i++)
+	for (int i = 0; i < WINDOW_WIDTH / sheet->getScaledTileWidth(); i++)
 	{
 		sheet->renderSprite(1, 0, i * tileWidth, 0);
 		sheet->renderSprite(1, 2, i * tileWidth, WINDOW_HEIGHT - tileHeight);
 	}
 
-	for (size_t i = 0; i < WINDOW_HEIGHT / sheet->getScaledTileHeight(); i++)
+	for (int i = 0; i < WINDOW_HEIGHT / sheet->getScaledTileHeight(); i++)
 	{
 		sheet->renderSprite(0, 1, 0, i * tileHeight);
 		sheet->renderSprite(2, 1, WINDOW_WIDTH - tileWidth, i * tileHeight);

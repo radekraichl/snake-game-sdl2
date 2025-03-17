@@ -1,3 +1,5 @@
+#include <vector>
+#include <memory>
 #include "Graphics.h"
 #include "SpriteSheet.h"
 #include "InputManager.h"
@@ -11,7 +13,7 @@ GameScene::GameScene(Graphics* graphics) : running(true), renderer(graphics->get
 {
 	addObject(std::make_unique<GameBackground>("game_background", renderer));
 	addObject(std::make_unique<Walls>("walls", renderer));
-	addObject(std::make_unique<Snake>("snake", 1 * Snake::TILE_SIZE, 16 * Snake::TILE_SIZE, renderer));
+	addObject(std::make_unique<Snake>("snake", renderer, 1 * Snake::TILE_SIZE, 16 * Snake::TILE_SIZE));
 
 	for (auto& obj : gameObjects)
 	{

@@ -1,6 +1,6 @@
 #include "GameObject.h"
 
-GameObject::GameObject(const std::string& name, SDL_Renderer* renderer) : name(name), renderer(renderer)
+GameObject::GameObject(const std::string& name) : name(name)
 {
 }
 

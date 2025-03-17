@@ -3,10 +3,6 @@
 #include <SDL_image.h>
 #include <string>
 
-struct SDL_Surface;
-struct SDL_Texture;
-struct SDL_Renderer;
-
 class Texture
 {
 private:

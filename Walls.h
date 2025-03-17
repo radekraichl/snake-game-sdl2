@@ -1,12 +1,12 @@
 #pragma once
 
-#include "GameObject.h"
+#include "GraphicObject.h"
 #include "SpriteSheet.h"
 
-class Walls : public GameObject
+class Walls : public GraphicObject
 {
 public:
-	GameObject::GameObject;
+	GraphicObject::GraphicObject;
 
 	void start() override;
 	void render() override;
@@ -14,4 +14,3 @@ public:
 private:
 	std::unique_ptr<SpriteSheet> sheet;
 };
-

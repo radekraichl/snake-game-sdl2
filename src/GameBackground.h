@@ -1,13 +1,15 @@
 #pragma once
 
+#include <vector>
+#include <memory>
 #include "Config.h"
 #include "SpriteSheet.h"
-#include "GameObject.h"
+#include "GraphicObject.h"
 
-class GameBackground : public GameObject
+class GameBackground : public GraphicObject
 {
 public:
-	GameObject::GameObject;
+	GraphicObject::GraphicObject;
 
 	void start() override;
 	void render() override;
@@ -18,4 +20,3 @@ private:
 	std::unique_ptr<SpriteSheet> sheet;
 	std::vector<std::vector<Position>> randomIndexArray;
 };
-
