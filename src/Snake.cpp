@@ -2,8 +2,8 @@
 #include "Direction.h"
 #include "InputManager.h"
 
-Snake::Snake(const std::string name, SDL_Renderer* renderer, int startX, int startY) :
-	GraphicObject(name, renderer), startX(startX), startY(startY)
+Snake::Snake(const std::string name, SDL_Renderer* renderer, std::shared_ptr<SDL_Rect> viewport, int startX, int startY) :
+	GraphicObject(name, renderer, viewport), startX(startX), startY(startY)
 {
 	sprites.emplace("head", std::make_unique<Sprite>("assets/images/snake_head.png", renderer, TILE_SIZE));
 	sprites.emplace("body", std::make_unique<Sprite>("assets/images/snake_body.png", renderer, TILE_SIZE));
@@ -67,8 +67,8 @@ void Snake::update(float deltaTime, InputManager& inputManager)
 		// Check if the snake has collided with the walls
 		if (body[0].x < WALL_TILE_SIZE ||
 			body[0].y < WALL_TILE_SIZE ||
-			body[0].x > WINDOW_WIDTH - WALL_TILE_SIZE - SNAKE_TILE_SIZE ||
-			body[0].y > WINDOW_HEIGHT - WALL_TILE_SIZE - SNAKE_TILE_SIZE)
+			body[0].x > BOARD_WIDTH - WALL_TILE_SIZE - SNAKE_TILE_SIZE ||
+			body[0].y > BOARD_HEIGHT - WALL_TILE_SIZE - SNAKE_TILE_SIZE)
 		{
 			isAlive = false;
 			body.pop_front();
@@ -78,7 +78,6 @@ void Snake::update(float deltaTime, InputManager& inputManager)
 		body.pop_back();
 		timeAccumulator = 0.0f;
 	}
-
 }
 
 void Snake::render()

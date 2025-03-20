@@ -1,5 +1,3 @@
-#include <SDL.h>
-#include <SDL_image.h>
 #include "Graphics.h"
 
 Graphics::Graphics() : window(nullptr), renderer(nullptr) {}

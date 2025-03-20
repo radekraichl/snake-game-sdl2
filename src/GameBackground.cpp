@@ -8,13 +8,13 @@
 void GameBackground::start()
 {
 	sheet = std::make_unique<SpriteSheet>("assets/images/pcb_sprite_sheet.png", 3, 3, renderer);
-	sheet->setTileScale(TILE_SCALE);
+	sheet->setTileSize(TILE_SIZE);
 
 	// Resize array
-	randomIndexArray.resize(WINDOW_HEIGHT / sheet->getScaledTileHeight());
+	randomIndexArray.resize(BOARD_HEIGHT / sheet->getScaledTileHeight());
 	for (auto& row : randomIndexArray)
 	{
-		row.resize(WINDOW_WIDTH / sheet->getScaledTileWidth());
+		row.resize(BOARD_WIDTH / sheet->getScaledTileWidth());
 	}
 
 	// Fill array

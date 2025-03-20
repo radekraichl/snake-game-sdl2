@@ -1,13 +1,25 @@
 #pragma once
 
+// Snake
 constexpr auto SNAKE_MOVE_INTERVAL = 0.15f;
-
 constexpr auto SNAKE_TILE_SIZE = 32;
+
+// Game background
+constexpr auto BACKGROUND_TILE_SIZE = 64;
+
+// Walls
 constexpr auto WALL_TILE_SIZE = 32;
-constexpr auto BACKGROUND_TILE_SCALE = 4;
 
-constexpr auto BOARD_WIDTH = 32;
-constexpr auto BOARD_HEIGHT = 24;
+// UI
+constexpr auto UI_HEIGHT = 96;
 
-constexpr auto WINDOW_WIDTH = BOARD_WIDTH * SNAKE_TILE_SIZE;
-constexpr auto WINDOW_HEIGHT = BOARD_HEIGHT * SNAKE_TILE_SIZE;
+// Board
+constexpr auto BOARD_HORIZONTAL_TILES = 32;
+constexpr auto BOARD_VERTICAL_TILES = 24;
+
+constexpr auto BOARD_WIDTH = BOARD_HORIZONTAL_TILES * SNAKE_TILE_SIZE;
+constexpr auto BOARD_HEIGHT = BOARD_VERTICAL_TILES * SNAKE_TILE_SIZE;
+
+// Window
+constexpr auto WINDOW_WIDTH = BOARD_HORIZONTAL_TILES * SNAKE_TILE_SIZE;
+constexpr auto WINDOW_HEIGHT = BOARD_VERTICAL_TILES * SNAKE_TILE_SIZE + UI_HEIGHT;

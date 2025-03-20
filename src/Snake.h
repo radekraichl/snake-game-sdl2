@@ -11,8 +11,8 @@ struct Position;
 class Snake : public GraphicObject
 {
 public:
-	Snake(const std::string name, SDL_Renderer* renderer, int startX, int startY);
-	
+	Snake(const std::string name, SDL_Renderer* renderer, std::shared_ptr<SDL_Rect> viewport, int startX, int startY);
+
 	static const int TILE_SIZE = SNAKE_TILE_SIZE;
 
 	void start() override;

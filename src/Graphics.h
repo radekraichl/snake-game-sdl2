@@ -1,7 +1,7 @@
 #pragma once
 
-struct SDL_Window;
-struct SDL_Renderer;
+#include <SDL.h>
+#include <SDL_image.h>
 
 class Graphics
 {

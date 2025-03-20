@@ -12,7 +12,6 @@ public:
 
 	virtual void start() {};
 	virtual void update(float deltaTime, InputManager& inputManager) {};
-	virtual void render() {};
 
 	std::string getName() const;
 

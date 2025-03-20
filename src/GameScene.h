@@ -4,6 +4,7 @@
 #include <memory>
 #include "Snake.h"
 #include "GameObject.h"
+#include <span>
 
 class Graphics;
 struct SDL_Renderer;
@@ -22,4 +23,8 @@ private:
 	InputManager inputManager;
 	SDL_Renderer* renderer;
 	std::vector<std::unique_ptr<GameObject>> gameObjects;
+	std::vector<GraphicObject*> graphicObjects;
+
+	// Private methods
+	std::vector<GraphicObject* const> getRenderableObjects() const;
 };

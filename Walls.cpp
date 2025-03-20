@@ -12,24 +12,24 @@ void Walls::render()
 	int tileWidth = sheet->getScaledTileWidth();
 	int tileHeight = sheet->getScaledTileHeight();
 
-	for (int i = 0; i < WINDOW_WIDTH / sheet->getScaledTileWidth(); i++)
+	for (int i = 0; i < BOARD_WIDTH / sheet->getScaledTileWidth(); i++)
 	{
 		sheet->renderSprite(1, 0, i * tileWidth, 0);
-		sheet->renderSprite(1, 2, i * tileWidth, WINDOW_HEIGHT - tileHeight);
+		sheet->renderSprite(1, 2, i * tileWidth, BOARD_HEIGHT - tileHeight);
 	}
 
-	for (int i = 0; i < WINDOW_HEIGHT / sheet->getScaledTileHeight(); i++)
+	for (int i = 0; i < BOARD_HEIGHT / sheet->getScaledTileHeight(); i++)
 	{
 		sheet->renderSprite(0, 1, 0, i * tileHeight);
-		sheet->renderSprite(2, 1, WINDOW_WIDTH - tileWidth, i * tileHeight);
+		sheet->renderSprite(2, 1, BOARD_WIDTH - tileWidth, i * tileHeight);
 	}
 
 	// Left top
 	sheet->renderSprite(0, 0, 0, 0);
 	// Right top
-	sheet->renderSprite(2, 0, WINDOW_WIDTH - tileWidth, 0);
+	sheet->renderSprite(2, 0, BOARD_WIDTH - tileWidth, 0);
 	// Left down
-	sheet->renderSprite(0, 2, 0, WINDOW_HEIGHT - tileHeight);
+	sheet->renderSprite(0, 2, 0, BOARD_HEIGHT - tileHeight);
 	// Right down
-	sheet->renderSprite(2, 2, WINDOW_WIDTH - tileWidth, WINDOW_HEIGHT - tileHeight);
+	sheet->renderSprite(2, 2, BOARD_WIDTH - tileWidth, BOARD_HEIGHT - tileHeight);
 }
