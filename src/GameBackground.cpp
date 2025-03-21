@@ -7,14 +7,14 @@
 
 void GameBackground::start()
 {
-	sheet = std::make_unique<SpriteSheet>("assets/images/pcb_sprite_sheet.png", 3, 3, renderer);
-	sheet->setTileSize(TILE_SIZE);
+	spriteSheet = std::make_unique<SpriteSheet>("assets/images/pcb_sprite_sheet.png", 3, 3, renderer);
+	spriteSheet->setTileSize(TILE_SIZE);
 
 	// Resize array
-	randomIndexArray.resize(BOARD_HEIGHT / sheet->getScaledTileHeight());
+	randomIndexArray.resize(BOARD_HEIGHT / spriteSheet->getScaledTileHeight());
 	for (auto& row : randomIndexArray)
 	{
-		row.resize(BOARD_WIDTH / sheet->getScaledTileWidth());
+		row.resize(BOARD_WIDTH / spriteSheet->getScaledTileWidth());
 	}
 
 	// Fill array
@@ -22,8 +22,8 @@ void GameBackground::start()
 	{
 		std::generate(row.begin(), row.end(), [&]()
 			{
-				return Position(Random::getInt(0, sheet->getColCount() - 1),
-					Random::getInt(0, sheet->getRowCount() - 1));
+				return Position(Random::getInt(0, spriteSheet->getColCount() - 1),
+					Random::getInt(0, spriteSheet->getRowCount() - 1));
 			});
 	}
 }
@@ -36,7 +36,7 @@ void GameBackground::render()
 		{
 			int index_x = randomIndexArray[row][col].x;
 			int index_y = randomIndexArray[row][col].y;
-			sheet->renderSprite(index_x, index_y, col * sheet->getScaledTileWidth(), row * sheet->getScaledTileHeight());
+			spriteSheet->renderSprite(index_x, index_y, col * spriteSheet->getScaledTileWidth(), row * spriteSheet->getScaledTileHeight());
 		}
 	}
 }

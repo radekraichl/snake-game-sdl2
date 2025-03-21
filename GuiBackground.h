@@ -1,9 +1,10 @@
 #pragma once
 
+#include "Config.h"
 #include "GraphicObject.h"
 #include "SpriteSheet.h"
 
-class Walls : public GraphicObject
+class GuiBackground : public GraphicObject
 {
 public:
 	GraphicObject::GraphicObject;
@@ -11,6 +12,9 @@ public:
 	void start() override;
 	void render() override;
 
+	static constexpr int TILE_SIZE = UI_TILE_SIZE;	
+
 private:
 	std::unique_ptr<SpriteSheet> spriteSheet;
 };
+

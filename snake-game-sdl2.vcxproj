@@ -178,6 +178,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GraphicObject.cpp" />
+    <ClCompile Include="GuiBackground.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\GameScene.cpp" />
     <ClCompile Include="src\Graphics.cpp" />
@@ -193,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicObject.h" />
+    <ClInclude Include="GuiBackground.h" />
     <ClInclude Include="src\Config.h" />
     <ClInclude Include="src\Direction.h" />
     <ClInclude Include="src\GameObject.h" />

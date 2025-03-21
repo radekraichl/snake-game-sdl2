@@ -1,5 +1,6 @@
 #include <vector>
 #include <memory>
+#include "GuiBackground.h"
 #include "GameBackground.h"
 #include "InputManager.h"
 #include "SpriteSheet.h"
@@ -13,6 +14,7 @@ GameScene::GameScene(Graphics* graphics) : running(true), renderer(graphics->get
 {
 	auto boardViewport = std::make_shared<SDL_Rect>(SDL_Rect { 0, UI_HEIGHT, BOARD_WIDTH, BOARD_HEIGHT });
 
+	addObject(std::make_unique<GuiBackground>("gui_background", renderer));
 	addObject(std::make_unique<GameBackground>("game_background", renderer, boardViewport));
 	addObject(std::make_unique<Walls>("walls", renderer, boardViewport));
 	addObject(std::make_unique<Snake>("snake", renderer, boardViewport, 1 * Snake::TILE_SIZE, 16 * Snake::TILE_SIZE));

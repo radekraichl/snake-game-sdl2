@@ -17,6 +17,6 @@ public:
 private:
 	static constexpr int TILE_SIZE = BACKGROUND_TILE_SIZE;
 
-	std::unique_ptr<SpriteSheet> sheet;
+	std::unique_ptr<SpriteSheet> spriteSheet;
 	std::vector<std::vector<Position>> randomIndexArray;
 };

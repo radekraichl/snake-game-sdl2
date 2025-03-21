@@ -9,7 +9,7 @@ struct SDL_Renderer;
 class SpriteSheet
 {
 public:
-	SpriteSheet(const std::string& filePath, int rows, int cols, SDL_Renderer* renderer);
+	SpriteSheet(const std::string& filePath, int cols, int rows, SDL_Renderer* renderer);
 	~SpriteSheet() = default;
 
 	void renderSprite(int index_x, int index_y, int posX, int posY);

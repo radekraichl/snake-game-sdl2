@@ -7,7 +7,7 @@ Texture::Texture(const std::string& path, SDL_Renderer* renderer) : filePath(pat
 	surface = IMG_Load(path.c_str());
 	if (surface == nullptr)
 	{
-		SDL_Log("IMG_Load Error: %s", IMG_GetError());
+		SDL_LogError(0, "IMG_Load Error: %s", IMG_GetError());
 		return;
 	}
 
@@ -16,7 +16,7 @@ Texture::Texture(const std::string& path, SDL_Renderer* renderer) : filePath(pat
 	if (texture == nullptr)
 	{
 		SDL_FreeSurface(surface);  // Free the surface if texture creation fails
-		SDL_Log("SDL_CreateTextureFromSurface Error: %s", SDL_GetError());
+		SDL_LogError(0, "SDL_CreateTextureFromSurface Error: %s", SDL_GetError());
 		return;
 	}
 

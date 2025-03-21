@@ -1,6 +1,6 @@
 #include "SpriteSheet.h"
 
-SpriteSheet::SpriteSheet(const std::string& filePath, int rows, int cols, SDL_Renderer* renderer) :
+SpriteSheet::SpriteSheet(const std::string& filePath, int cols, int rows, SDL_Renderer* renderer) :
 	rowCount(rows), colCount(cols), realTileWidth(0), realTileHeight(0), renderer(renderer)
 {
 	sprite = std::make_unique<Sprite>(filePath, renderer);
