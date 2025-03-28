@@ -8,6 +8,7 @@ Texture::Texture(const std::string& path, SDL_Renderer* renderer) : filePath(pat
 	if (surface == nullptr)
 	{
 		SDL_LogError(0, "IMG_Load Error: %s", IMG_GetError());
+		SDL_Quit();
 		return;
 	}
 

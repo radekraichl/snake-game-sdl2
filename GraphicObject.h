@@ -26,7 +26,7 @@ public:
 	void setViewportRect(int x, int y, int w, int h);
 
 protected:
-	SDL_Renderer* renderer;
+	SDL_Renderer* const renderer;
 
 private:
 	std::unique_ptr<SDL_Rect> viewportRect = nullptr;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <SDL_image.h>
 
 class Graphics
@@ -19,7 +20,8 @@ private:
 	SDL_Renderer* renderer;
 
 	bool initSDL();
+	bool initImage();
+	bool initTTF();
 	bool createWindowAndRenderer(const char* title, int width, int height);
-	bool imageInit();
 	void cleanup();
 };

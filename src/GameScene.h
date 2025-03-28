@@ -2,11 +2,11 @@
 
 #include <vector>
 #include <memory>
-#include "Snake.h"
 #include "GameObject.h"
-#include <span>
+#include "InputManager.h"
 
 class Graphics;
+class GraphicObject;
 struct SDL_Renderer;
 
 class GameScene
@@ -24,7 +24,4 @@ private:
 	SDL_Renderer* renderer;
 	std::vector<std::unique_ptr<GameObject>> gameObjects;
 	std::vector<GraphicObject*> graphicObjects;
-
-	// Private methods
-	std::vector<GraphicObject* const> getRenderableObjects() const;
 };

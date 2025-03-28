@@ -18,22 +18,11 @@ bool Graphics::init(const char* title, int width, int height)
 		cleanup();
 		return false;
 	}
-	if (!imageInit())
+	if (!initImage() || !initTTF())
 	{
 		cleanup();
 		return false;
 	}
-	return true;
-}
-
-bool Graphics::initSDL()
-{
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-	{
-		SDL_Log("SDL_Init Error: %s", SDL_GetError());
-		return false;
-	}
-	SDL_Log("SDL_Init");
 	return true;
 }
 
@@ -61,7 +50,18 @@ bool Graphics::createWindowAndRenderer(const char* title, int width, int height)
 	return true;
 }
 
-bool Graphics::imageInit()
+bool Graphics::initSDL()
+{
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+	{
+		SDL_Log("SDL_Init Error: %s", SDL_GetError());
+		return false;
+	}
+	SDL_Log("SDL_Init");
+	return true;
+}
+
+bool Graphics::initImage()
 {
 	if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
 	{
@@ -69,6 +69,17 @@ bool Graphics::imageInit()
 		return false;
 	}
 	SDL_Log("IMG_Init");
+	return true;
+}
+
+bool Graphics::initTTF()
+{
+	if (TTF_Init() == -1)
+	{
+		SDL_LogError(SDL_LOG_CATEGORY_ERROR, "TTF_Init Error: %s", TTF_GetError());
+		return false;
+	}
+	SDL_Log("TTF_Init");
 	return true;
 }
 
@@ -85,9 +96,11 @@ void Graphics::cleanup()
 		SDL_DestroyWindow(window);
 		SDL_Log("SDL_DestroyWindow");
 		window = nullptr;
+
 	}
-	SDL_Quit();
 	IMG_Quit();
+	TTF_Quit();
+	SDL_Quit();
 }
 
 SDL_Window* Graphics::getWindow() const

@@ -8,14 +8,13 @@
 
 int main()
 {
+	Random::init();
 	Graphics graphics;
 
 	if (!graphics.init("Snake", WINDOW_WIDTH, WINDOW_HEIGHT))
 	{
 		return EXIT_FAILURE;
 	}
-
-	Random::init();
 
 	GameScene gameScene(&graphics);
 	gameScene.run();

@@ -8,6 +8,7 @@
 #include "Graphics.h"
 #include "Snake.h"
 #include "Walls.h"
+#include "ScoreText.h"
 
 // Constructor
 GameScene::GameScene(Graphics* graphics) : running(true), renderer(graphics->getRenderer())
@@ -17,7 +18,8 @@ GameScene::GameScene(Graphics* graphics) : running(true), renderer(graphics->get
 	addObject(std::make_unique<GuiBackground>("gui_background", renderer));
 	addObject(std::make_unique<GameBackground>("game_background", renderer, boardViewport));
 	addObject(std::make_unique<Walls>("walls", renderer, boardViewport));
-	addObject(std::make_unique<Snake>("snake", renderer, boardViewport, 1 * Snake::TILE_SIZE, 16 * Snake::TILE_SIZE));
+	addObject(std::make_unique<Snake>("snake", renderer, boardViewport, 2 * Snake::TILE_SIZE, (BOARD_VERTICAL_TILES / 2) * Snake::TILE_SIZE));
+	addObject(std::make_unique<ScoreText>("score_text", renderer));
 
 	for (auto& obj : gameObjects)
 	{
