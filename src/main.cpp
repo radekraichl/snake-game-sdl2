@@ -11,13 +11,17 @@ int main()
 	Random::init();
 	Graphics graphics;
 
-	if (!graphics.init("Snake", WINDOW_WIDTH, WINDOW_HEIGHT))
+	try
 	{
+		graphics.init(GAME_NAME, WINDOW_WIDTH, WINDOW_HEIGHT);
+		GameScene gameScene(&graphics);
+		gameScene.run();
+	}
+	catch (const std::runtime_error& e)
+	{
+		SDL_LogError(SDL_LOG_CATEGORY_ERROR, e.what());
 		return EXIT_FAILURE;
 	}
-
-	GameScene gameScene(&graphics);
-	gameScene.run();
 
 	return EXIT_SUCCESS;
 }

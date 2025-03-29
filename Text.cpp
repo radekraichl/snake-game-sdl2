@@ -1,37 +1,36 @@
 #include <SDL_ttf.h>
+#include "Error.h"
 #include "Text.h"
 
 Text::Text(const std::string& filePath, int size, SDL_Renderer* const renderer) :
-	filePath(filePath), size(size), renderer(renderer)
+	filePath(filePath), size(size), renderer(renderer), surface(nullptr), texture(nullptr)
 {
-	font = TTF_OpenFont(filePath.c_str(), size);
-	if (!font)
-	{
-		SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Failed to load font: %s", SDL_GetError());
-	}
-
+	Error::assert(font = TTF_OpenFont(filePath.c_str(), size));
 	color = { 255, 255, 255, 255 };
-	setText("");
 }
 
 Text::~Text()
 {
+	if (font != nullptr)
+	{
+		TTF_CloseFont(font);
+	}
 	if (surface != nullptr)
 	{
 		SDL_FreeSurface(surface);
 	}
-
 	if (texture != nullptr)
 	{
 		SDL_DestroyTexture(texture);
-		SDL_Log("SDL_DestroyTexture %s", filePath.c_str());
 	}
+
+	SDL_Log("Destroy Text: %s", filePath.c_str());
 }
 
 void Text::setText(std::string text)
 {
-	surface = TTF_RenderText_Solid(font, text.c_str(), color);  // TODO error assert
-	texture = SDL_CreateTextureFromSurface(renderer, surface);  // TODO error assert
+	Error::assert(surface = TTF_RenderText_Solid(font, text.c_str(), color));
+	Error::assert(texture = SDL_CreateTextureFromSurface(renderer, surface));
 }
 
 void Text::setColor(SDL_Color col)

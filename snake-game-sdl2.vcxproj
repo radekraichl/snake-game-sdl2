@@ -177,6 +177,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Error.cpp" />
     <ClCompile Include="GraphicObject.cpp" />
     <ClCompile Include="ScoreText.cpp" />
     <ClCompile Include="GuiBackground.cpp" />
@@ -195,6 +196,7 @@
     <ClCompile Include="Walls.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Error.h" />
     <ClInclude Include="GraphicObject.h" />
     <ClInclude Include="ScoreText.h" />
     <ClInclude Include="GuiBackground.h" />

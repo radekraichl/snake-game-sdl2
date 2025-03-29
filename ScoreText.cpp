@@ -3,8 +3,8 @@
 
 void ScoreText::start()
 {
-	score = std::make_unique<Text>("assets/fonts/atari-800.ttf", 16, renderer);
-	score->setColor(SDL_Color { 224, 186, 100, 255 });
+	score = std::make_unique<Text>("assets/fonts/atari-800.ttf", 18, renderer);
+	score->setColor({ 224, 186, 100, 255 });
 	score->setText("SCORE: 0");
 }
 

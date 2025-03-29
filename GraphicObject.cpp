@@ -36,10 +36,7 @@ void GraphicObject::setViewportForRendering()
 	}
 }
 
-void GraphicObject::setDefaultViewportForRendering()
+void GraphicObject::setDefaultViewportForRendering() const
 {
-	if (viewportRect != nullptr)
-	{
-		SDL_RenderSetViewport(renderer, nullptr);
-	}
+	SDL_RenderSetViewport(renderer, nullptr);
 }

@@ -33,5 +33,5 @@ private:
 	
 	// Private methods
 	void setViewportForRendering();
-	void setDefaultViewportForRendering();
+	void setDefaultViewportForRendering() const;
 };

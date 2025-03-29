@@ -1,4 +1,5 @@
 #include "Sprite.h"
+#include "Error.h"
 
 // Constructor
 Sprite::Sprite(const std::string& filePath, SDL_Renderer* renderer, int tileSize)
@@ -8,7 +9,7 @@ Sprite::Sprite(const std::string& filePath, SDL_Renderer* renderer, int tileSize
 	texture = sprite->getTexture();
 
 	int tempWidth, tempHeight;
-	SDL_QueryTexture(texture, nullptr, nullptr, &tempWidth, &tempHeight);
+	Error::assert(SDL_QueryTexture(texture, nullptr, nullptr, &tempWidth, &tempHeight) == 0);
 	*const_cast<int*>(&realTextureWidth) = tempWidth;
 	*const_cast<int*>(&realTextureHeight) = tempHeight;
 

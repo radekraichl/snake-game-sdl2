@@ -84,11 +84,14 @@
     <ClCompile Include="GuiBackground.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreText.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Text.cpp">
       <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreText.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Error.cpp">
+      <Filter>Source Files\Engine\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,7 +147,10 @@
       <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="ScoreText.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Error.h">
+      <Filter>Header Files\Engine\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

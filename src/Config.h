@@ -24,3 +24,6 @@ constexpr auto BACKGROUND_TILE_SIZE = BOARD_TILE_SIZE * 2;
 
 // Walls
 constexpr auto WALL_TILE_SIZE = BOARD_TILE_SIZE;
+
+// Strings
+constexpr auto GAME_NAME = "Snake Game";

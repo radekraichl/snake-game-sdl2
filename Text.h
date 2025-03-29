@@ -15,13 +15,14 @@ public:
 	// Getters
 	int getWidth() const;
 	int getHeight() const;
+
 private:
 	int size;
 	std::string text;
 	std::string filePath;
 	SDL_Color color;
 	TTF_Font* font;
-	SDL_Renderer* renderer;
 	SDL_Surface* surface;
 	SDL_Texture* texture;
+	SDL_Renderer* const renderer;
 };
