@@ -20,6 +20,7 @@ int main()
 	catch (const std::runtime_error& e)
 	{
 		SDL_LogError(SDL_LOG_CATEGORY_ERROR, e.what());
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "A failure occurred", e.what(), nullptr);
 		return EXIT_FAILURE;
 	}
 
