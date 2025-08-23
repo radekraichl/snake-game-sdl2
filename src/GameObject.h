@@ -1,7 +1,10 @@
 #pragma once
 
 #include <string>
-#include "InputManager.h"
+
+class SDL_Renderer;
+class InputManager;
+class Scene;
 
 class GameObject
 {
@@ -10,11 +13,17 @@ public:
 	GameObject(const std::string& name);
 	virtual ~GameObject() = default;
 
+	virtual void init(SDL_Renderer* renderer, Scene* scene);
 	virtual void start() {};
 	virtual void update(float deltaTime, InputManager& inputManager) {};
 
+	// Getters
 	std::string getName() const;
+	Scene* getScene() const;
 
 private:
 	const std::string name;
+
+protected:
+	Scene* scene;
 };

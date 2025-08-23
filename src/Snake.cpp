@@ -1,27 +1,28 @@
 ﻿#include "Snake.h"
 #include "Direction.h"
 #include "InputManager.h"
+#include "GameScene.h"
 
-Snake::Snake(const std::string name, SDL_Renderer* renderer, std::shared_ptr<SDL_Rect> viewport, int startX, int startY) :
-	GraphicObject(name, renderer, viewport), startX(startX), startY(startY)
-{
-	sprites.emplace("head", std::make_unique<Sprite>("assets/images/snake_head.png", renderer, TILE_SIZE));
-	sprites.emplace("body", std::make_unique<Sprite>("assets/images/snake_body.png", renderer, TILE_SIZE));
-	sprites.emplace("turn", std::make_unique<Sprite>("assets/images/snake_turn.png", renderer, TILE_SIZE));
-	sprites.emplace("tail", std::make_unique<Sprite>("assets/images/snake_tail.png", renderer, TILE_SIZE));
-}
-
-void Snake::start()
+Snake::Snake(const std::string name, std::shared_ptr<SDL_Rect> viewport, int startX, int startY) :
+	GraphicObject(name, viewport), startX(startX), startY(startY)
 {
 	body.clear();
 	isAlive = true;
 	timeAccumulator = 0.0f;
 	currentDirection = Direction::Right;
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		body.push_front(Position(startX + i * TILE_SIZE, startY));
 	}
+}
+
+void Snake::start()
+{
+	sprites.emplace("head", std::make_unique<Sprite>("assets/images/snake_head.png", renderer, TILE_SIZE));
+	sprites.emplace("body", std::make_unique<Sprite>("assets/images/snake_body.png", renderer, TILE_SIZE));
+	sprites.emplace("turn", std::make_unique<Sprite>("assets/images/snake_turn.png", renderer, TILE_SIZE));
+	sprites.emplace("tail", std::make_unique<Sprite>("assets/images/snake_tail.png", renderer, TILE_SIZE));
 }
 
 void Snake::update(float deltaTime, InputManager& inputManager)
@@ -65,10 +66,10 @@ void Snake::update(float deltaTime, InputManager& inputManager)
 		}
 
 		// Check if the snake has collided with the walls
-		if (body[0].x < WALL_TILE_SIZE ||
-			body[0].y < WALL_TILE_SIZE ||
-			body[0].x > BOARD_WIDTH - WALL_TILE_SIZE - SNAKE_TILE_SIZE ||
-			body[0].y > BOARD_HEIGHT - WALL_TILE_SIZE - SNAKE_TILE_SIZE)
+		if (body[0].x < 0 ||
+			body[0].y < 0 ||
+			body[0].x > BOARD_WIDTH - SNAKE_TILE_SIZE ||
+			body[0].y > BOARD_HEIGHT - SNAKE_TILE_SIZE)
 		{
 			isAlive = false;
 			body.pop_front();
@@ -146,4 +147,15 @@ int Snake::getTailRotationAngle(const Position& current, const Position& prev) c
 	if (current.y > prev.y) return 270;
 
 	return 0;
+}
+
+// Getters
+std::deque<Position> Snake::getBody() const
+{
+	return body;
+}
+
+Position Snake::getHeadPosition() const
+{
+	return body[0];
 }

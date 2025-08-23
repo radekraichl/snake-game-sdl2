@@ -1,5 +1,8 @@
 #pragma once
-#include "Texture.h"
+
+#include <string>
+
+struct TTF_Font;
 
 class Text
 {

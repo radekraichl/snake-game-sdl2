@@ -5,13 +5,14 @@
 #include "GraphicObject.h"
 #include "Sprite.h"
 #include "Config.h"
+#include "Direction.h"
 
 struct Position;
 
 class Snake : public GraphicObject
 {
 public:
-	Snake(const std::string name, SDL_Renderer* renderer, std::shared_ptr<SDL_Rect> viewport, int startX, int startY);
+	Snake(const std::string name, std::shared_ptr<SDL_Rect> viewport, int startX, int startY);
 
 	static const int TILE_SIZE = SNAKE_TILE_SIZE;
 
@@ -19,12 +20,17 @@ public:
 	void update(float deltaTime, InputManager& inputManager) override;
 	void render() override;
 
+	// Getters
+	std::deque<Position> getBody() const;
+	Position getHeadPosition() const;
+
 private:
 	bool isAlive = true;
 	int startX, startY;
 	float timeAccumulator = 0.0f;
 	float moveInterval = SNAKE_MOVE_INTERVAL;
 	std::deque<Position> body;
+
 	std::map<std::string, std::unique_ptr<Sprite>> sprites;
 	Direction currentDirection = Direction::Right;
 

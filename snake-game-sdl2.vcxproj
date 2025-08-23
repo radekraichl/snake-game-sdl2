@@ -178,7 +178,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Error.cpp" />
+    <ClCompile Include="Food.cpp" />
     <ClCompile Include="GraphicObject.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScoreText.cpp" />
     <ClCompile Include="GuiBackground.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
@@ -197,7 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Error.h" />
+    <ClInclude Include="Food.h" />
     <ClInclude Include="GraphicObject.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="ScoreText.h" />
     <ClInclude Include="GuiBackground.h" />
     <ClInclude Include="src\Config.h" />

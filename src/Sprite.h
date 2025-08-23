@@ -5,7 +5,6 @@
 #include "Texture.h"
 #include "Position.h"
 
-struct SDL_Surface;
 struct SDL_Texture;
 struct SDL_Renderer;
 struct SDL_Rect;
@@ -22,13 +21,15 @@ public:
 	void renderSprite(int posX, int posY, float rot);
 
 	// Setters
+	void setPosition(int posX, int posY);
 	void setScale(int scale);
 	void setTileSize(int size);
 	void setRotation(float rot);
-	void setSrcRect(SDL_Rect rect);
+	void setSrcRect(const SDL_Rect& rect);
 
 	// Getters
 	SDL_Texture* getTexture() const;
+	Position getPosition() const;
 	int getScaledWidth() const;
 	int getScaledHeight() const;
 	int getRealWidth() const;

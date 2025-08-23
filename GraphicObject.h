@@ -1,17 +1,18 @@
 #pragma once
 
+#include <SDL.h>
 #include <memory>
-#include "GameObject.h"
-#include "Graphics.h"
+#include "Scene.h"
 
 class GraphicObject : public GameObject
 {
 public:
 	// Construcors
 	GraphicObject() = delete;
-	GraphicObject(std::string name, SDL_Renderer* renderer, std::shared_ptr<SDL_Rect> viewport = nullptr);
+	GraphicObject(std::string name, std::shared_ptr<SDL_Rect> viewport = nullptr);
+	void init(SDL_Renderer* renderer, Scene* scene) override;
 
-	virtual void render() = 0;
+	virtual void render() {};
 
 	void renderInViewport() 
 	{
@@ -26,7 +27,7 @@ public:
 	void setViewportRect(int x, int y, int w, int h);
 
 protected:
-	SDL_Renderer* const renderer;
+	SDL_Renderer* renderer;
 
 private:
 	std::unique_ptr<SDL_Rect> viewportRect = nullptr;

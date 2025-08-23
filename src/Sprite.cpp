@@ -41,27 +41,10 @@ void Sprite::renderSprite(int posX, int posY, float rot)
 	SDL_RenderCopyEx(renderer, getTexture(), &srcRect, &destRect, rotation, nullptr, SDL_FLIP_NONE);
 }
 
-// Setters
-void Sprite::setScale(int scale)
+void Sprite::setPosition(int posX, int posY)
 {
-	this->scale = scale;
-	scaledWidth = realTextureWidth * scale;
-	scaledHeight = realTextureHeight * scale;
-}
-
-void Sprite::setTileSize(int size)
-{
-	setScale(size / realTextureWidth);
-}
-
-void Sprite::setRotation(float rot)
-{
-	rotation = rot;
-}
-
-void Sprite::setSrcRect(SDL_Rect rect)
-{
-	srcRect = rect;
+	position.x = posX;
+	position.y = posY;
 }
 
 // Private methods
@@ -77,6 +60,11 @@ void Sprite::updateTransform(int posX, int posY, float rot)
 SDL_Texture* Sprite::getTexture() const
 {
 	return texture;
+}
+
+Position Sprite::getPosition() const
+{
+	return position;
 }
 
 int Sprite::getScaledWidth() const
@@ -102,4 +90,27 @@ int Sprite::getRealHeight() const
 int Sprite::getScale() const
 {
 	return scale;
+}
+
+// Setters
+void Sprite::setScale(int scale)
+{
+	this->scale = scale;
+	scaledWidth = realTextureWidth * scale;
+	scaledHeight = realTextureHeight * scale;
+}
+
+void Sprite::setTileSize(int size)
+{
+	setScale(size / realTextureWidth);
+}
+
+void Sprite::setRotation(float rot)
+{
+	rotation = rot;
+}
+
+void Sprite::setSrcRect(const SDL_Rect& rect)
+{
+	srcRect = rect;
 }

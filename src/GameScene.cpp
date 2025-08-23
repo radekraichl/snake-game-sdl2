@@ -1,30 +1,31 @@
 #include <vector>
 #include <memory>
-#include "GuiBackground.h"
-#include "GameBackground.h"
-#include "InputManager.h"
-#include "SpriteSheet.h"
 #include "GameScene.h"
-#include "Graphics.h"
-#include "Snake.h"
-#include "Walls.h"
+#include "Scene.h"
+#include "GuiBackground.h"
 #include "ScoreText.h"
+#include "GameBackground.h"
+#include "Walls.h"
+#include "Food.h"
+#include "Snake.h"
 
 // Constructor
-GameScene::GameScene(Graphics* graphics) : running(true), renderer(graphics->getRenderer())
+GameScene::GameScene(Graphics* graphics) : Scene(graphics)
 {
-	auto boardViewport = std::make_shared<SDL_Rect>(SDL_Rect { 0, UI_HEIGHT, BOARD_WIDTH, BOARD_HEIGHT });
+	Init();
+}
 
-	addObject(std::make_unique<GuiBackground>("gui_background", renderer));
-	addObject(std::make_unique<GameBackground>("game_background", renderer, boardViewport));
-	addObject(std::make_unique<Walls>("walls", renderer, boardViewport));
-	addObject(std::make_unique<Snake>("snake", renderer, boardViewport, 2 * Snake::TILE_SIZE, (BOARD_VERTICAL_TILES / 2) * Snake::TILE_SIZE));
-	addObject(std::make_unique<ScoreText>("score_text", renderer));
+void GameScene::addObjects()
+{
+	auto gameWindow = std::make_shared<SDL_Rect>(SDL_Rect{ 0, UI_HEIGHT, GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT });
+	auto gameArea = std::make_shared<SDL_Rect>(SDL_Rect{ WALL_TILE_SIZE, UI_HEIGHT + WALL_TILE_SIZE, BOARD_WIDTH, BOARD_HEIGHT });
 
-	for (auto& obj : gameObjects)
-	{
-		obj->start();
-	}
+	addObject(std::make_unique<GuiBackground>("gui_background"));
+	addObject(std::make_unique<ScoreText>("score_text"));
+	addObject(std::make_unique<GameBackground>("game_background", gameArea));
+	addObject(std::make_unique<Walls>("walls", gameWindow));
+	addObject(std::make_unique<Food>("food", gameArea));
+	addObject(std::make_unique<Snake>("snake", gameArea, 2 * Snake::TILE_SIZE, (BOARD_VERTICAL_TILES / 2) * Snake::TILE_SIZE));
 }
 
 void GameScene::run()
@@ -36,6 +37,7 @@ void GameScene::run()
 		Uint32 currentTime = SDL_GetTicks();
 		float deltaTime = (currentTime - lastTime) / 1000.0f;
 		lastTime = currentTime;
+
 		SDL_RenderClear(renderer);
 		inputManager.Update();
 
@@ -65,14 +67,3 @@ void GameScene::run()
 	}
 }
 
-void GameScene::addObject(std::unique_ptr<GameObject> object)
-{
-	// Add the object to the gameObjects vector
-	gameObjects.emplace_back(std::move(object));
-
-	// If the object is of type GraphicObject, add it also to the renderable graphicObjects list
-	if (auto graphicObj = dynamic_cast<GraphicObject*>(gameObjects.back().get()))
-	{
-		graphicObjects.push_back(graphicObj);
-	}
-}
