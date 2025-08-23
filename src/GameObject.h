@@ -13,9 +13,10 @@ public:
 	GameObject(const std::string& name);
 	virtual ~GameObject() = default;
 
-	virtual void init(SDL_Renderer* renderer, Scene* scene);
+	virtual void init(SDL_Renderer* renderer, Scene* scene, InputManager* inputManager);
+
 	virtual void start() {};
-	virtual void update(float deltaTime, InputManager& inputManager) {};
+	virtual void update(float deltaTime) {};
 
 	// Getters
 	std::string getName() const;
@@ -26,4 +27,5 @@ private:
 
 protected:
 	Scene* scene;
+	InputManager* inputManager;
 };

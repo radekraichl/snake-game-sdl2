@@ -3,7 +3,7 @@
 #include "GameObject.h"
 #include "GraphicObject.h"
 
-Scene::Scene(Graphics* graphics) : graphics(graphics), renderer(graphics->getRenderer()), running(true)
+Scene::Scene(Graphics* graphics) : graphics(graphics), renderer(graphics->getRenderer())
 {
 }
 
@@ -17,7 +17,7 @@ void Scene::InitObjects()
 {
 	for (auto& obj : gameObjects)
 	{
-		obj->init(renderer, this);
+		obj->init(renderer, this, &inputManager);
 	}
 
 	for (auto& obj : gameObjects)

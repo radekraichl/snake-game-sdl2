@@ -5,15 +5,16 @@
 
 void Food::start()
 {
+	eatSound = std::make_unique<Sound>("assets/sounds/eat.wav");
 	snake = scene->findObjectByType<Snake>();
-	
-    for (size_t i = 0; i < 10; i++)
+
+	for (size_t i = 0; i < 10; i++)
 	{
-        addFood();
+		addFood();
 	}
 }
 
-void Food::update(float deltaTime, InputManager& inputManager)
+void Food::update(float deltaTime)
 {
 	if (snake)
 	{
@@ -26,6 +27,11 @@ void Food::update(float deltaTime, InputManager& inputManager)
 			if (headPos == foodPos)
 			{
 				it = foodSprites.erase(it); // Erases the object and returns a valid iterator
+				if (onFoodEaten)
+				{
+					eatSound->Play();
+					onFoodEaten();
+				}
 			}
 			else
 			{
@@ -45,42 +51,42 @@ void Food::render()
 
 void Food::addFood()
 {
-    int tileX, tileY;
-    bool valid = false;
+	int tileX, tileY;
+	bool valid = false;
 
-    while (!valid)
-    {
-        tileX = Random::getInt(0, BOARD_HORIZONTAL_TILES);
-        tileY = Random::getInt(0, BOARD_VERTICAL_TILES);
+	while (!valid)
+	{
+		tileX = Random::getInt(0, BOARD_HORIZONTAL_TILES);
+		tileY = Random::getInt(0, BOARD_VERTICAL_TILES);
 
-        Position newPos{ tileX * BOARD_TILE_SIZE, tileY * BOARD_TILE_SIZE };
-        valid = true;
+		Position newPos{ tileX * BOARD_TILE_SIZE, tileY * BOARD_TILE_SIZE };
+		valid = true;
 
-        // Check against snake body
-        for (const auto& bodyPart : snake->getBody())
-        {
-            if (bodyPart.x == newPos.x && bodyPart.y == newPos.y)
-            {
-                valid = false;
-                break;
-            }
-        }
+		// Check against snake body
+		for (const auto& bodyPart : snake->getBody())
+		{
+			if (bodyPart.x == newPos.x && bodyPart.y == newPos.y)
+			{
+				valid = false;
+				break;
+			}
+		}
 
-        // Check against existing food
-        if (valid)
-        {
-            for (const auto& food : foodSprites)
-            {
-                if (food->getPosition().x == newPos.x && food->getPosition().y == newPos.y)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-        }
-    }
+		// Check against existing food
+		if (valid)
+		{
+			for (const auto& food : foodSprites)
+			{
+				if (food->getPosition().x == newPos.x && food->getPosition().y == newPos.y)
+				{
+					valid = false;
+					break;
+				}
+			}
+		}
+	}
 
-    auto foodSprite = std::make_unique<Sprite>("assets/images/chip.png", renderer, 32);
-    foodSprite->setPosition(tileX * BOARD_TILE_SIZE, tileY * BOARD_TILE_SIZE);
-    foodSprites.emplace_back(std::move(foodSprite));
+	auto foodSprite = std::make_unique<Sprite>("assets/images/chip.png", renderer, 32);
+	foodSprite->setPosition(tileX * BOARD_TILE_SIZE, tileY * BOARD_TILE_SIZE);
+	foodSprites.emplace_back(std::move(foodSprite));
 }

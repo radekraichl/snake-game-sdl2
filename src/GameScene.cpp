@@ -43,7 +43,7 @@ void GameScene::run()
 
 		for (auto& obj : gameObjects)
 		{
-			obj->update(deltaTime, inputManager);
+			obj->update(deltaTime);
 		}
 
 		for (GraphicObject* obj : graphicObjects)

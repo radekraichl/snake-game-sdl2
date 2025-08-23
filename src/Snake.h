@@ -17,8 +17,9 @@ public:
 	static const int TILE_SIZE = SNAKE_TILE_SIZE;
 
 	void start() override;
-	void update(float deltaTime, InputManager& inputManager) override;
+	void update(float deltaTime) override;
 	void render() override;
+	void reset();
 
 	// Getters
 	std::deque<Position> getBody() const;

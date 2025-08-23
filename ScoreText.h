@@ -2,6 +2,7 @@
 
 #include "GraphicObject.h"
 #include "Text.h"
+#include "Food.h"
 
 class ScoreText : public GraphicObject
 {
@@ -10,7 +11,13 @@ public:
 
 	void start() override;
 	void render() override;
+	void update(float deltaTime) override;
 
 private:
-	std::unique_ptr<Text> score;
+	int score;
+	std::unique_ptr<Text> scoreText;
+	Food* food;
+
+	void printScore(int score);
+	void handleFoodEaten();
 };

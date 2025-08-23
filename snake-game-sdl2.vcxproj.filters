@@ -40,6 +40,12 @@
     <Filter Include="Header Files\Engine\Core">
       <UniqueIdentifier>{06bf4906-528d-404f-afe5-db216cde98f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Audio">
+      <UniqueIdentifier>{237b542c-f9e6-428f-a02a-8f7b1fc70170}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Audio">
+      <UniqueIdentifier>{6373127f-f92c-456e-a6dc-0d72b4d454e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -98,6 +104,12 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Source Files\Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files\Engine\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +175,12 @@
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Header Files\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Header Files\Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files\Engine\Audio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

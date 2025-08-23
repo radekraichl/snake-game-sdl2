@@ -6,15 +6,7 @@
 Snake::Snake(const std::string name, std::shared_ptr<SDL_Rect> viewport, int startX, int startY) :
 	GraphicObject(name, viewport), startX(startX), startY(startY)
 {
-	body.clear();
-	isAlive = true;
-	timeAccumulator = 0.0f;
-	currentDirection = Direction::Right;
-
-	for (int i = 0; i < 8; i++)
-	{
-		body.push_front(Position(startX + i * TILE_SIZE, startY));
-	}
+	reset();
 }
 
 void Snake::start()
@@ -25,31 +17,44 @@ void Snake::start()
 	sprites.emplace("tail", std::make_unique<Sprite>("assets/images/snake_tail.png", renderer, TILE_SIZE));
 }
 
-void Snake::update(float deltaTime, InputManager& inputManager)
+void Snake::reset()
+{
+	body.clear();
+	isAlive = true;
+	timeAccumulator = 0.0f;
+	currentDirection = Direction::Right;
+
+	for (int i = 0; i < 4; i++)
+	{
+		body.push_front(Position(startX + i * TILE_SIZE, startY));
+	}
+}
+
+void Snake::update(float deltaTime)
 {
 	timeAccumulator += deltaTime;
 
-	if (inputManager.GetLastKeyPressed() == SDLK_r)
+	if (inputManager->GetLastKeyPressed() == SDLK_r)
 	{
-		start();
-		inputManager.SetNoneDirection();
+		reset();
+		inputManager->SetNoneDirection();
 	}
 
 	if (timeAccumulator >= moveInterval && isAlive)
 	{
-		if (inputManager.GetDirection() != Direction::None)
+		if (inputManager->GetDirection() != Direction::None)
 		{
-			constrainDirection(inputManager.GetDirection());
+			constrainDirection(inputManager->GetDirection());
 		}
 
 		Position newHead = body.front();
 
 		switch (currentDirection)
 		{
-			case Direction::Up:    newHead.y -= 1 * TILE_SIZE; break;
-			case Direction::Down:  newHead.y += 1 * TILE_SIZE; break;
-			case Direction::Left:  newHead.x -= 1 * TILE_SIZE; break;
-			case Direction::Right: newHead.x += 1 * TILE_SIZE; break;
+		case Direction::Up:    newHead.y -= 1 * TILE_SIZE; break;
+		case Direction::Down:  newHead.y += 1 * TILE_SIZE; break;
+		case Direction::Left:  newHead.x -= 1 * TILE_SIZE; break;
+		case Direction::Right: newHead.x += 1 * TILE_SIZE; break;
 		}
 
 		body.push_front(newHead);

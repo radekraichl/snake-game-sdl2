@@ -10,10 +10,11 @@ GraphicObject::GraphicObject(std::string name, std::shared_ptr<SDL_Rect> viewpor
 	}
 }
 
-void GraphicObject::init(SDL_Renderer* renderer, Scene* scene)
+void GraphicObject::init(SDL_Renderer* renderer, Scene* scene, InputManager* inputManager)
 {
 	this->renderer = renderer;
 	this->scene = scene;
+	this->inputManager = inputManager;
 }
 
 bool GraphicObject::hasViewportRect() const

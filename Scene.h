@@ -36,10 +36,9 @@ public:
 	}
 
 protected:
+	InputManager inputManager;
 	Graphics* graphics;
 	SDL_Renderer* renderer;
-	InputManager inputManager;
-	bool running;
 	std::vector<std::unique_ptr<GameObject>> gameObjects;
 	std::vector<GraphicObject*> graphicObjects;
 

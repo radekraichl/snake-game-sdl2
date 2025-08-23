@@ -4,13 +4,17 @@
 #include <memory>
 #include "Scene.h"
 
+class InputManager;
+
 class GraphicObject : public GameObject
 {
 public:
 	// Construcors
 	GraphicObject() = delete;
 	GraphicObject(std::string name, std::shared_ptr<SDL_Rect> viewport = nullptr);
-	void init(SDL_Renderer* renderer, Scene* scene) override;
+
+	// Methods
+	void init(SDL_Renderer* renderer, Scene* scene, InputManager* inputManager) override;
 
 	virtual void render() {};
 
