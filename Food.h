@@ -5,6 +5,7 @@
 #include "sprite.h"
 #include "Sound.h"
 #include "GraphicObject.h"
+#include "Signal.h"
 
 class InputManager;
 class Snake;
@@ -19,7 +20,7 @@ public:
 	void render() override;
 
 	// Callback
-	std::function<void()> onFoodEaten;
+	Signal<void> onFoodEaten;
 
 private:
 	Snake* snake;

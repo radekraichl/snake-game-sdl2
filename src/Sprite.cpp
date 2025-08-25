@@ -100,7 +100,7 @@ void Sprite::setScale(int scale)
 	scaledHeight = realTextureHeight * scale;
 }
 
-void Sprite::setTileSize(int size)
+void Sprite::setSpriteSize(int size)
 {
 	setScale(size / realTextureWidth);
 }

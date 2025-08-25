@@ -5,7 +5,7 @@
 void ScoreText::start()
 {
 	food = scene->findObjectByType<Food>();
-	food->onFoodEaten = [this]() { handleFoodEaten(); };
+	food->onFoodEaten.connect([this]() { handleFoodEaten(); });
 
 	score = 0;
 	scoreText = std::make_unique<Text>("assets/fonts/atari-800.ttf", 18, renderer);

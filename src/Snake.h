@@ -4,6 +4,7 @@
 #include <deque>
 #include "GraphicObject.h"
 #include "Sprite.h"
+#include "Food.h"
 #include "Config.h"
 #include "Direction.h"
 
@@ -28,15 +29,21 @@ public:
 private:
 	bool isAlive = true;
 	int startX, startY;
+	int segmentsToGrow;
 	float timeAccumulator = 0.0f;
-	float moveInterval = SNAKE_MOVE_INTERVAL;
-	std::deque<Position> body;
-
-	std::map<std::string, std::unique_ptr<Sprite>> sprites;
+	float moveInterval = SNAKE_START_MOVE_INTERVAL;
 	Direction currentDirection = Direction::Right;
-
+	std::deque<Position> body;
+	std::map<std::string, std::unique_ptr<Sprite>> sprites;
+	Food* food;
+	
+	// Private methods
+	void Grow(int amount);
+	void increaseSpeed(float amount);
 	void constrainDirection(Direction newDirection);
+	void handleFoodEaten();
 
+	// Private getters
 	int getRotationAngle(const Position& prev, const Position& current, const Position& next) const;
 	int getTailRotationAngle(const Position& current, const Position& prev) const;
 };

@@ -23,7 +23,7 @@ constexpr auto WINDOW_WIDTH = GAME_WINDOW_WIDTH;
 constexpr auto WINDOW_HEIGHT = GAME_WINDOW_HEIGHT + UI_HEIGHT;
 
 // Snake
-constexpr auto SNAKE_MOVE_INTERVAL = 0.15f;
+constexpr auto SNAKE_START_MOVE_INTERVAL = 0.24;
 constexpr auto SNAKE_TILE_SIZE = BOARD_TILE_SIZE;
 
 // Game background

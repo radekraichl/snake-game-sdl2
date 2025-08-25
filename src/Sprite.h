@@ -23,7 +23,7 @@ public:
 	// Setters
 	void setPosition(int posX, int posY);
 	void setScale(int scale);
-	void setTileSize(int size);
+	void setSpriteSize(int size);
 	void setRotation(float rot);
 	void setSrcRect(const SDL_Rect& rect);
 

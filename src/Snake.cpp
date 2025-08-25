@@ -4,13 +4,16 @@
 #include "GameScene.h"
 
 Snake::Snake(const std::string name, std::shared_ptr<SDL_Rect> viewport, int startX, int startY) :
-	GraphicObject(name, viewport), startX(startX), startY(startY)
+	GraphicObject(name, viewport), startX(startX), startY(startY), segmentsToGrow(0)
 {
 	reset();
 }
 
 void Snake::start()
 {
+	food = scene->findObjectByType<Food>();
+	food->onFoodEaten.connect([this]() { handleFoodEaten(); });
+
 	sprites.emplace("head", std::make_unique<Sprite>("assets/images/snake_head.png", renderer, TILE_SIZE));
 	sprites.emplace("body", std::make_unique<Sprite>("assets/images/snake_body.png", renderer, TILE_SIZE));
 	sprites.emplace("turn", std::make_unique<Sprite>("assets/images/snake_turn.png", renderer, TILE_SIZE));
@@ -34,6 +37,7 @@ void Snake::update(float deltaTime)
 {
 	timeAccumulator += deltaTime;
 
+	// RESET - R KEY
 	if (inputManager->GetLastKeyPressed() == SDLK_r)
 	{
 		reset();
@@ -51,10 +55,10 @@ void Snake::update(float deltaTime)
 
 		switch (currentDirection)
 		{
-		case Direction::Up:    newHead.y -= 1 * TILE_SIZE; break;
-		case Direction::Down:  newHead.y += 1 * TILE_SIZE; break;
-		case Direction::Left:  newHead.x -= 1 * TILE_SIZE; break;
-		case Direction::Right: newHead.x += 1 * TILE_SIZE; break;
+			case Direction::Up:    newHead.y -= 1 * TILE_SIZE; break;
+			case Direction::Down:  newHead.y += 1 * TILE_SIZE; break;
+			case Direction::Left:  newHead.x -= 1 * TILE_SIZE; break;
+			case Direction::Right: newHead.x += 1 * TILE_SIZE; break;
 		}
 
 		body.push_front(newHead);
@@ -81,7 +85,15 @@ void Snake::update(float deltaTime)
 			return;
 		}
 
-		body.pop_back();
+		if (segmentsToGrow == 0)
+		{
+			body.pop_back();
+		}
+		else
+		{
+			--segmentsToGrow;
+		}
+
 		timeAccumulator = 0.0f;
 	}
 }
@@ -111,6 +123,7 @@ void Snake::render()
 	sprites["tail"]->renderSprite(body[body.size() - 1].x, body[body.size() - 1].y, (float)rotation);
 }
 
+// Private methods
 void Snake::constrainDirection(Direction newDirection)
 {
 	if ((currentDirection == Direction::Up && newDirection == Direction::Down) ||
@@ -124,6 +137,23 @@ void Snake::constrainDirection(Direction newDirection)
 	currentDirection = newDirection;
 }
 
+void Snake::Grow(int amount)
+{
+	segmentsToGrow += amount;
+}
+
+void Snake::increaseSpeed(float amount)
+{
+	moveInterval -= amount;
+}
+
+void Snake::handleFoodEaten()
+{
+	Grow(1);
+	increaseSpeed(0.004f);
+}
+
+// Private getters
 int Snake::getRotationAngle(const Position& prev, const Position& current, const Position& next) const
 {
 	// Direct

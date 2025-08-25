@@ -8,7 +8,7 @@ void Food::start()
 	eatSound = std::make_unique<Sound>("assets/sounds/eat.wav");
 	snake = scene->findObjectByType<Snake>();
 
-	for (size_t i = 0; i < 10; i++)
+	for (size_t i = 0; i < 30; i++)
 	{
 		addFood();
 	}
@@ -29,8 +29,8 @@ void Food::update(float deltaTime)
 				it = foodSprites.erase(it); // Erases the object and returns a valid iterator
 				if (onFoodEaten)
 				{
+					onFoodEaten.emit();
 					eatSound->Play();
-					onFoodEaten();
 				}
 			}
 			else
