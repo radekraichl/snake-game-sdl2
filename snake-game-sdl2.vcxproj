@@ -198,10 +198,12 @@
     <ClCompile Include="src\SpriteSheet.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TiledWindow.cpp" />
     <ClCompile Include="Walls.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Audio.h" />
+    <ClInclude Include="Bounds.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="GraphicObject.h" />
@@ -224,6 +226,7 @@
     <ClInclude Include="src\SpriteSheet.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="TiledWindow.h" />
     <ClInclude Include="Walls.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

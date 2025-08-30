@@ -34,8 +34,8 @@ void GameBackground::render()
 	{
 		for (int col = 0; col < randomIndexArray[row].size(); ++col)
 		{
-			int index_x = randomIndexArray[row][col].x;
-			int index_y = randomIndexArray[row][col].y;
+			int index_x = (int)randomIndexArray[row][col].x;
+			int index_y = (int)randomIndexArray[row][col].y;
 			spriteSheet->renderSprite(index_x, index_y, col * spriteSheet->getScaledTileWidth(), row * spriteSheet->getScaledTileHeight());
 		}
 	}

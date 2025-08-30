@@ -63,12 +63,15 @@ void Food::addFood()
 		valid = true;
 
 		// Check against snake body
-		for (const auto& bodyPart : snake->getBody())
+		if (snake)
 		{
-			if (bodyPart.x == newPos.x && bodyPart.y == newPos.y)
+			for (const auto& bodyPart : snake->getBody())
 			{
-				valid = false;
-				break;
+				if (bodyPart.x == newPos.x && bodyPart.y == newPos.y)
+				{
+					valid = false;
+					break;
+				}
 			}
 		}
 

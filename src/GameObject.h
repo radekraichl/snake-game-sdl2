@@ -2,7 +2,7 @@
 
 #include <string>
 
-class SDL_Renderer;
+struct SDL_Renderer;
 class InputManager;
 class Scene;
 

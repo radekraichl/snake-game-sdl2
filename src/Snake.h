@@ -31,7 +31,7 @@ private:
 	int startX, startY;
 	int segmentsToGrow;
 	float timeAccumulator = 0.0f;
-	float moveInterval = SNAKE_START_MOVE_INTERVAL;
+	float moveInterval = (float)SNAKE_START_MOVE_INTERVAL;
 	Direction currentDirection = Direction::Right;
 	std::deque<Position> body;
 	std::map<std::string, std::unique_ptr<Sprite>> sprites;

@@ -31,6 +31,7 @@ Texture::~Texture()
 	{
 		SDL_DestroyTexture(texture);
 	}
+
 	SDL_Log("Destroy Texture: %s", filePath.c_str());
 }
 

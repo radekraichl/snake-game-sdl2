@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="45acbac2-9965-4f58-9b0b-645686931dc7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/Scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snake-game-sdl2.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/snake-game-sdl2.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snake-game-sdl2.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/snake-game-sdl2.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameBackground.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBackground.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObject.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameScene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameScene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameScene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameScene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Texture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Texture.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2025" />
+    <option name="minorVersion" value="2.1" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="320e4KmhH0fySQspto0WILGeU7D" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="45acbac2-9965-4f58-9b0b-645686931dc7" name="Changes" comment="" />
+      <created>1756561726498</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756561726498</updated>
+      <workItem from="1756561729818" duration="7000" />
+    </task>
+    <servers />
+  </component>
+</project>

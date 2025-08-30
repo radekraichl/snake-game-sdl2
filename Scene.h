@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "GraphicObject.h"
 
-class SDL_Renderer;
+struct SDL_Renderer;
 class Graphics;
 class GameObject;
 class GraphicObject;

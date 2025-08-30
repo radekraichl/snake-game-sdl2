@@ -114,6 +114,9 @@
     <ClCompile Include="Signal.cpp">
       <Filter>Source Files\Engine\Core</Filter>
     </ClCompile>
+    <ClCompile Include="TiledWindow.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Config.h">
@@ -186,6 +189,12 @@
       <Filter>Header Files\Engine\Audio</Filter>
     </ClInclude>
     <ClInclude Include="Signal.h">
+      <Filter>Header Files\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TiledWindow.h">
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Bounds.h">
       <Filter>Header Files\Engine\Core</Filter>
     </ClInclude>
   </ItemGroup>

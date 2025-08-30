@@ -16,7 +16,6 @@ public:
 private:
 	int score;
 	std::unique_ptr<Text> scoreText;
-	Food* food;
 
 	void printScore(int score);
 	void handleFoodEaten();
