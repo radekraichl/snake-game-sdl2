@@ -9,7 +9,7 @@ class InputManager;
 class GraphicObject : public GameObject
 {
 public:
-	// Construcors
+	// Constructors
 	GraphicObject() = delete;
 	GraphicObject(std::string name, std::shared_ptr<SDL_Rect> viewport = nullptr);
 

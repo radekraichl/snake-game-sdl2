@@ -8,6 +8,7 @@
 #include "Walls.h"
 #include "Food.h"
 #include "Snake.h"
+#include "PauseWindow.h"
 
 // Constructor
 GameScene::GameScene(Graphics* graphics) : Scene(graphics)
@@ -17,18 +18,19 @@ GameScene::GameScene(Graphics* graphics) : Scene(graphics)
 
 void GameScene::addObjects()
 {
-	window = std::make_unique<TiledWindow>("assets/images/ui_window.png", 18, 10, 2, renderer);
-	window->setPositionCentered(Position(WINDOW_WIDTH / 2, (WINDOW_HEIGHT + UI_HEIGHT) / 2));
-
 	auto gameWindow = std::make_shared<SDL_Rect>(SDL_Rect{ 0, UI_HEIGHT, GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT });
 	auto gameArea = std::make_shared<SDL_Rect>(SDL_Rect{ WALL_TILE_SIZE, UI_HEIGHT + WALL_TILE_SIZE, BOARD_WIDTH, BOARD_HEIGHT });
 
-	addObject(std::make_unique<GuiBackground>("gui_background"));
-	addObject(std::make_unique<ScoreText>("score_text"));
 	addObject(std::make_unique<GameBackground>("game_background", gameArea));
+	addObject(std::make_unique<GuiBackground>("gui_background"));
 	addObject(std::make_unique<Walls>("walls", gameWindow));
+	addObject(std::make_unique<ScoreText>("score_text"));
 	addObject(std::make_unique<Food>("food", gameArea));
 	//addObject(std::make_unique<Snake>("snake", gameArea, 2 * Snake::TILE_SIZE, (BOARD_VERTICAL_TILES / 2) * Snake::TILE_SIZE));
+
+	addObject(std::make_unique<PauseWindow>("pause_win"));
+
+	findObjectByType<PauseWindow>()->setActive(true);
 }
 
 void GameScene::run()
@@ -37,7 +39,6 @@ void GameScene::run()
 
 	while (!inputManager.WasQuitRequested())
 	{
-
 		Uint32 currentTime = SDL_GetTicks();
 		float deltaTime = (currentTime - lastTime) / 1000.0f;
 		lastTime = currentTime;
@@ -67,8 +68,6 @@ void GameScene::run()
 			break;
 		}
 
-		window->Render();
 		SDL_RenderPresent(renderer);
 	}
 }
-

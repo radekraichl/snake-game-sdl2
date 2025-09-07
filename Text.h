@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include "Position.h"
+#include "Bounds.h"
 
 struct TTF_Font;
 
@@ -13,7 +15,9 @@ public:
 	// Setters
 	void setText(std::string text);
 	void setColor(SDL_Color color);
-	void print(int posX, int posY);
+	void setPositionCentered(float x, float y);
+	void print();
+	void print(float posX, float posY);
 
 	// Getters
 	int getWidth() const;
@@ -21,6 +25,8 @@ public:
 
 private:
 	int size;
+	Bounds bounds;
+	Position position;
 	std::string text;
 	std::string filePath;
 	SDL_Color color;

@@ -1,6 +1,5 @@
 #include "Config.h"
 #include "ScoreText.h"
-#include <format>
 
 void ScoreText::start()
 {
@@ -21,7 +20,7 @@ void ScoreText::update(float deltaTime)
 
 void ScoreText::render()
 {
-	scoreText->print(UI_TILE_SIZE, (UI_HEIGHT / 2) - (scoreText->getHeight() / 2));
+	scoreText->print((float)UI_TILE_SIZE, (UI_HEIGHT / 2.0f) - (scoreText->getHeight() / 2.0f));
 }
 
 void ScoreText::printScore(int score)
