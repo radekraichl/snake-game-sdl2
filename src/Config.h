@@ -16,7 +16,7 @@ constexpr auto GAME_WINDOW_HEIGHT = BOARD_HEIGHT + 2 * WALL_TILE_SIZE;
 
 // UI
 constexpr auto UI_HEIGHT = 96;
-constexpr auto UI_TILE_SIZE = BOARD_TILE_SIZE;
+constexpr auto UI_SCORE_BAR_TILE_SIZE = BOARD_TILE_SIZE;
 
 // Window
 constexpr auto WINDOW_WIDTH = GAME_WINDOW_WIDTH;

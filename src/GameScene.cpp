@@ -30,7 +30,9 @@ void GameScene::addObjects()
 
 	addObject(std::make_unique<PauseWindow>("pause_win"));
 
-	findObjectByType<PauseWindow>()->setActive(true);
+	auto pauseWin = findObjectByType<PauseWindow>();
+	if (pauseWin)
+		pauseWin->setActive(true);
 }
 
 void GameScene::run()

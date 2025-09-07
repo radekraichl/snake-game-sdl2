@@ -12,7 +12,7 @@ public:
 	void start() override;
 	void render() override;
 
-	static constexpr int TILE_SIZE = UI_TILE_SIZE;	
+	static constexpr int TILE_SIZE = UI_SCORE_BAR_TILE_SIZE;	
 
 private:
 	std::unique_ptr<SpriteSheet> spriteSheet;

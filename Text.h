@@ -11,17 +11,19 @@ class Text
 public:
 	Text(const std::string& filePath, int size, SDL_Renderer* const renderer);
 	~Text();
-
-	// Setters
-	void setText(std::string text);
-	void setColor(SDL_Color color);
-	void setPositionCentered(float x, float y);
+	
+	// Methods
 	void print();
 	void print(float posX, float posY);
 
 	// Getters
 	int getWidth() const;
 	int getHeight() const;
+
+	// Setters
+	void setText(std::string text);
+	void setColor(SDL_Color color);
+	void setPositionCentered(float x, float y);
 
 private:
 	int size;

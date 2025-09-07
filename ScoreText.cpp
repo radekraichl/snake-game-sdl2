@@ -9,7 +9,7 @@ void ScoreText::start()
 	}
 
 	score = 0;
-	scoreText = std::make_unique<Text>("assets/fonts/atari-800.ttf", 18, renderer);
+	scoreText = std::make_unique<Text>("assets/fonts/UpheavalPro.ttf", 30, renderer);
 	scoreText->setColor({ 224, 186, 100, 255 });
 	printScore(0);
 }
@@ -20,12 +20,12 @@ void ScoreText::update(float deltaTime)
 
 void ScoreText::render()
 {
-	scoreText->print((float)UI_TILE_SIZE, (UI_HEIGHT / 2.0f) - (scoreText->getHeight() / 2.0f));
+	scoreText->print((float)UI_SCORE_BAR_TILE_SIZE, (UI_HEIGHT / 2.0f) - (scoreText->getHeight() / 2.0f) + 2.0f);
 }
 
 void ScoreText::printScore(int score)
 {
-	scoreText->setText("SCORE: " + std::to_string(score));
+	scoreText->setText("SCORE : " + std::to_string(score));
 }
 
 void ScoreText::handleFoodEaten()
